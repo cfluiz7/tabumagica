@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Matemática - Aprenda e Domine!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Adicionar Font Awesome ou similar para ícones, se necessário -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+</head>
+<body>
+    <!-- Background Shapes (Opcional, mantido do CSS) -->
+    <div class="background-shapes">
+        <div class="shape circle" style="width:150px; height:150px; top: 10%; left: 5%;"></div>
+        <div class="shape square" style="width:100px; height:100px; top: 70%; left: 80%;"></div>
+        <!-- Adicionar mais shapes conforme desejado -->
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <!-- <i class="fas fa-calculator logo-icon"></i> Substituir por SVG ou ícone real -->
+                <span class="logo-icon">🧮</span> 
+                <h1 class="logo-text">Matemática+</h1>
+            </div>
+            <button class="nav-toggle-btn" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link" data-section="home-section">Início</a></li>
+                    <li class="nav-item-has-children">
+                        <a href="#fundamentos" class="nav-link">Nível 1: Fundamentos</a>
+                        <ul class="submenu">
+                            <li><a href="#soma" class="nav-link" data-section="soma-section">Soma</a></li>
+                            <li><a href="#subtracao" class="nav-link" data-section="subtracao-section">Subtração</a></li>
+                            <li><a href="#multiplicacao" class="nav-link" data-section="multiplicacao-section">Multiplicação</a></li>
+                            <li><a href="#divisao" class="nav-link" data-section="divisao-section">Divisão</a></li>
+                            <li><a href="#calculo-mental-fundamentos" class="nav-link" data-section="calculo-mental-fundamentos-section">Cálculo Mental (Fundamentos)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item-has-children">
+                        <a href="#intermediario" class="nav-link">Nível 2: Intermediário</a>
+                        <ul class="submenu">
+                            <li><a href="#regra-de-tres" class="nav-link" data-section="regra-de-tres-section">Regra de 3</a></li>
+                            <li><a href="#porcentagem" class="nav-link" data-section="porcentagem-section">Porcentagem</a></li>
+                            <li><a href="#fracoes" class="nav-link" data-section="fracoes-section">Frações</a></li>
+                            <li><a href="#mmc-mdc" class="nav-link" data-section="mmc-mdc-section">MMC e MDC</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item-has-children">
+                        <a href="#avancado" class="nav-link">Nível 3: Avançado</a>
+                        <ul class="submenu">
+                            <li><a href="#equacoes1" class="nav-link" data-section="equacoes1-section">Equações do 1º Grau</a></li>
+                            <li><a href="#equacoes2" class="nav-link" data-section="equacoes2-section">Equações do 2º Grau</a></li>
+                            <li><a href="#funcao-afim" class="nav-link" data-section="funcao-afim-section">Função Afim</a></li>
+                            <li><a href="#razao-proporcao" class="nav-link" data-section="razao-proporcao-section">Razão e Proporção</a></li>
+                            <li><a href="#geometria" class="nav-link" data-section="geometria-section">Área, Perímetro e Volume</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#treino" class="nav-link" data-section="treino-section">Treinar</a></li>
+                    <li><a href="#rabiscar" class="nav-link" data-section="rabiscar-section">Rabiscar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="main-content-area">
+        <!-- Seção Inicial (Hero) -->
+        <section id="home-section" class="content-section active hero-section">
+            <h1>Bem-vindo à Matemática+</h1>
+            <p>Sua jornada para dominar a matemática começa aqui. Explore os níveis, aprenda com exemplos e pratique para se tornar um mestre dos números!</p>
+            <button class="btn btn-primary btn-large nav-link" data-section="fundamentos-redirect">Começar pelos Fundamentos</button>
+        </section>
+
+        <!-- Seções de Conteúdo (serão preenchidas dinamicamente ou manualmente) -->
+        <!-- Nível 1: Fundamentos -->
+        <section id="soma-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Soma</h2>
+            <div class="explanation-block">
+                <h4>O que é Soma?</h4>
+                <p>A soma, também conhecida como adição, é uma das operações fundamentais da aritmética. Ela combina duas ou mais quantidades, chamadas de "parcelas", para encontrar um total, chamado de "soma" ou "resultado". O símbolo da soma é o "+".</p>
+                <p>Por exemplo, se você tem 2 maçãs e ganha mais 3 maçãs, a operação de soma (2 + 3) te dirá que você tem um total de 5 maçãs.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido:</h4>
+                <p><strong>Problema:</strong> Maria tinha 5 balas e seu amigo João lhe deu mais 4 balas. Quantas balas Maria tem agora?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Parcela 1: 5 balas</p>
+                <p>Parcela 2: 4 balas</p>
+                <p>Operação: 5 + 4 = 9</p>
+                <p><strong>Resposta:</strong> Maria tem agora 9 balas.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Calcule: 7 + 6 = ?</p>
+                <p>2. Se um cesto tem 10 laranjas e adicionamos mais 5, quantas laranjas o cesto terá?</p>
+                <p>(Mais exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="subtracao-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Subtração</h2>
+            <div class="explanation-block">
+                <h4>O que é Subtração?</h4>
+                <p>A subtração é a operação matemática que representa o processo de remover, tirar ou diminuir uma quantidade de outra. As quantidades envolvidas são chamadas de "minuendo" (o número do qual se subtrai) e "subtraendo" (o número que é subtraído). O resultado da subtração é chamado de "diferença" ou "resto". O símbolo da subtração é o "-".</p>
+                <p>Por exemplo, se você tem 8 balões e 3 deles estouram, a operação de subtração (8 - 3) te dirá que restaram 5 balões.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido:</h4>
+                <p><strong>Problema:</strong> Pedro tinha 12 figurinhas e deu 5 para sua irmã. Com quantas figurinhas Pedro ficou?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Minuendo: 12 figurinhas</p>
+                <p>Subtraendo: 5 figurinhas</p>
+                <p>Operação: 12 - 5 = 7</p>
+                <p><strong>Resposta:</strong> Pedro ficou com 7 figurinhas.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Calcule: 15 - 7 = ?</p>
+                <p>2. Uma caixa continha 20 lápis. Se 8 lápis foram retirados, quantos lápis restaram na caixa?</p>
+                <p>(Mais exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="multiplicacao-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Multiplicação</h2>
+            <div class="explanation-block">
+                <h4>O que é Multiplicação?</h4>
+                <p>A multiplicação é uma forma de representar a soma de parcelas iguais. Em vez de somar o mesmo número várias vezes (por exemplo, 2 + 2 + 2), podemos multiplicar (2 x 3). Os números que são multiplicados são chamados de "fatores", e o resultado é chamado de "produto". Os símbolos comuns para multiplicação são "x" ou "*".</p>
+                <p>Por exemplo, se você tem 4 caixas e cada caixa contém 6 lápis, a multiplicação (4 x 6) te dirá que você tem um total de 24 lápis.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido:</h4>
+                <p><strong>Problema:</strong> Uma floricultura vende buquês com 5 rosas cada. Se uma cliente comprou 3 buquês, quantas rosas ela comprou ao todo?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Fator 1: 3 buquês</p>
+                <p>Fator 2: 5 rosas por buquê</p>
+                <p>Operação: 3 x 5 = 15</p>
+                <p><strong>Resposta:</strong> A cliente comprou 15 rosas ao todo.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Calcule: 7 x 4 = ?</p>
+                <p>2. Se um pacote tem 8 biscoitos, quantos biscoitos existem em 6 pacotes?</p>
+                <p>(Mais exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="divisao-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Divisão</h2>
+            <div class="explanation-block">
+                <h4>O que é Divisão?</h4>
+                <p>A divisão é a operação matemática que nos permite repartir uma quantidade em partes iguais ou descobrir quantas vezes uma quantidade cabe em outra. Os números envolvidos na divisão são o "dividendo" (a quantidade a ser dividida), o "divisor" (o número pelo qual se divide), o "quociente" (o resultado da divisão) e o "resto" (o que sobra quando a divisão não é exata). Os símbolos comuns para divisão são "÷", ":" ou "/".</p>
+                <p>Por exemplo, se você tem 12 balas e quer dividi-las igualmente entre 3 amigos, a divisão (12 ÷ 3) te dirá que cada amigo receberá 4 balas.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido:</h4>
+                <p><strong>Problema:</strong> Uma professora tem 20 lápis para distribuir igualmente entre 5 alunos. Quantos lápis cada aluno receberá?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Dividendo: 20 lápis</p>
+                <p>Divisor: 5 alunos</p>
+                <p>Operação: 20 ÷ 5 = 4</p>
+                <p><strong>Resposta:</strong> Cada aluno receberá 4 lápis.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Calcule: 18 ÷ 6 = ?</p>
+                <p>2. Se um bolo foi cortado em 8 fatias e há 4 pessoas, quantas fatias cada pessoa pode comer (supondo divisão igual)?</p>
+                <p>(Mais exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="calculo-mental-fundamentos-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Cálculo Mental (Fundamentos)</h2>
+            <div class="explanation-block">
+                <h4>O que é Cálculo Mental?</h4>
+                <p>Cálculo mental é a habilidade de realizar operações matemáticas (como soma, subtração, multiplicação e divisão) usando apenas o cérebro, sem a ajuda de calculadoras, papel e caneta, ou outros dispositivos. É uma ferramenta poderosa para o dia a dia, agilizando a resolução de problemas e melhorando a compreensão dos números.</p>
+                <p>Dominar o cálculo mental envolve conhecer fatos numéricos básicos, entender as propriedades das operações e aplicar estratégias eficientes.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo de Estratégia (Decomposição para Soma):</h4>
+                <p><strong>Problema:</strong> Calcule mentalmente 27 + 48.</p>
+                <p><strong>Estratégia de Resolução:</strong></p>
+                <p>1. Decomponha os números: 27 = 20 + 7; 48 = 40 + 8.</p>
+                <p>2. Some as dezenas: 20 + 40 = 60.</p>
+                <p>3. Some as unidades: 7 + 8 = 15.</p>
+                <p>4. Some os resultados parciais: 60 + 15 = 75.</p>
+                <p><strong>Resposta:</strong> 27 + 48 = 75.</p>
+            </div>
+            <div class="example-block">
+                <h4>Dica para Multiplicação por 5:</h4>
+                <p>Para multiplicar um número por 5, você pode multiplicá-lo por 10 (adicionando um zero no final) e depois dividir o resultado por 2.</p>
+                <p><strong>Exemplo:</strong> 36 x 5</p>
+                <p>1. 36 x 10 = 360</p>
+                <p>2. 360 ÷ 2 = 180</p>
+                <p><strong>Resposta:</strong> 36 x 5 = 180.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos (Tente mentalmente!):</h4>
+                <p>1. Some: 35 + 23 = ?</p>
+                <p>2. Subtraia: 50 - 18 = ?</p>
+                <p>3. Multiplique: 14 x 5 = ? (Use a dica!)</p>
+                <p>(Mais dicas e exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+
+        <!-- Nível 2: Intermediário -->
+        <section id="regra-de-tres-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Regra de 3 Simples e Composta</h2>
+            <div class="explanation-block">
+                <h4>O que é Regra de 3?</h4>
+                <p>A Regra de 3 é um método prático para resolver problemas que envolvem grandezas proporcionais. Ela pode ser "simples" quando relaciona duas grandezas, ou "composta" quando relaciona três ou mais grandezas.</p>
+                <p><strong>Regra de 3 Simples:</strong> Usada quando temos duas grandezas diretamente ou inversamente proporcionais. Se uma aumenta e a outra também aumenta (ou diminui na mesma proporção), são diretamente proporcionais. Se uma aumenta e a outra diminui (ou vice-versa), são inversamente proporcionais.</p>
+                <p><strong>Regra de 3 Composta:</strong> Usada para problemas com mais de duas grandezas proporcionais. A análise de proporcionalidade (direta ou inversa) é feita comparando cada grandeza com aquela que contém a incógnita (o valor desconhecido).</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Regra de 3 Simples Direta):</h4>
+                <p><strong>Problema:</strong> Se 3 cadernos custam R$ 15,00, quanto custarão 5 cadernos?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Montamos a proporção (setas no mesmo sentido para grandezas diretamente proporcionais):</p>
+                <p>Cadernos &nbsp;&nbsp;&nbsp;&nbsp; Preço (R$)</p>
+                <p>3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15</p>
+                <p>5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X</p>
+                <p>Como são diretamente proporcionais (mais cadernos, maior o preço), multiplicamos em cruz:</p>
+                <p>3 * X = 5 * 15</p>
+                <p>3X = 75</p>
+                <p>X = 75 / 3</p>
+                <p>X = 25</p>
+                <p><strong>Resposta:</strong> 5 cadernos custarão R$ 25,00.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Regra de 3 Simples Inversa):</h4>
+                <p><strong>Problema:</strong> Se 4 pedreiros constroem um muro em 6 dias, em quantos dias 8 pedreiros construirão o mesmo muro?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Montamos a proporção (setas em sentidos opostos para grandezas inversamente proporcionais):</p>
+                <p>Pedreiros &nbsp;&nbsp;&nbsp;&nbsp; Dias</p>
+                <p>4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6</p>
+                <p>8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X</p>
+                <p>Como são inversamente proporcionais (mais pedreiros, menos dias), invertemos uma das razões antes de multiplicar em cruz ou multiplicamos em linha:</p>
+                <p>8 * X = 4 * 6  (Multiplicando em linha após identificar a inversão)</p>
+                <p>8X = 24</p>
+                <p>X = 24 / 8</p>
+                <p>X = 3</p>
+                <p><strong>Resposta:</strong> 8 pedreiros construirão o muro em 3 dias.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Se um carro percorre 120 km com 10 litros de gasolina, quantos km ele percorrerá com 15 litros?</p>
+                <p>2. Para pintar uma casa, 5 pintores levam 8 dias. Se forem contratados 10 pintores, em quantos dias a casa será pintada?</p>
+                <p>(Mais exemplos de Regra de 3 Composta e exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="porcentagem-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Porcentagem</h2>
+            <div class="explanation-block">
+                <h4>O que é Porcentagem?</h4>
+                <p>Porcentagem (ou percentagem) significa "por cem" e é uma forma de expressar uma proporção ou uma relação entre dois valores a partir de uma fração cujo denominador é 100. O símbolo para porcentagem é "%" (por cento).</p>
+                <p>É amplamente utilizada para representar descontos, acréscimos, taxas de juros, proporções em pesquisas, etc. Por exemplo, 50% de um valor significa metade desse valor.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Calcular Porcentagem de um Valor):</h4>
+                <p><strong>Problema:</strong> Quanto é 20% de R$ 150,00?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>1. Transforme a porcentagem em fração ou decimal: 20% = 20/100 = 0,20.</p>
+                <p>2. Multiplique pelo valor total:</p>
+                <p>   Usando fração: (20/100) * 150 = (20 * 150) / 100 = 3000 / 100 = 30.</p>
+                <p>   Usando decimal: 0,20 * 150 = 30.</p>
+                <p><strong>Resposta:</strong> 20% de R$ 150,00 é R$ 30,00.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Acréscimo Percentual):</h4>
+                <p><strong>Problema:</strong> Um produto custava R$ 80,00 e teve um acréscimo de 10%. Qual o novo preço?</p>
+                <p><strong>Resolução:</strong></p>
+                <p>1. Calcule o valor do acréscimo: 10% de R$ 80,00 = (10/100) * 80 = 0,10 * 80 = R$ 8,00.</p>
+                <p>2. Some o acréscimo ao preço original: R$ 80,00 + R$ 8,00 = R$ 88,00.</p>
+                <p>   Alternativamente, multiplique o valor original por (1 + taxa decimal): 80 * (1 + 0,10) = 80 * 1,10 = 88.</p>
+                <p><strong>Resposta:</strong> O novo preço é R$ 88,00.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Calcule 25% de 200.</p>
+                <p>2. Uma loja oferece um desconto de 15% em um item que custa R$ 120,00. Qual o valor do desconto e o preço final?</p>
+                <p>(Mais exemplos e exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="fracoes-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Frações</h2>
+            <div class="explanation-block">
+                <h4>O que são Frações?</h4>
+                <p>Uma fração representa uma parte de um todo ou uma divisão. Ela é escrita com dois números separados por uma linha: o número de cima é o "numerador" (indica quantas partes estamos considerando) e o número de baixo é o "denominador" (indica em quantas partes iguais o todo foi dividido). O denominador nunca pode ser zero.</p>
+                <p>Por exemplo, a fração 1/2 (lê-se "um meio") significa que pegamos 1 parte de algo que foi dividido em 2 partes iguais.</p>
+                <p>Existem diferentes tipos de frações: próprias (numerador menor que o denominador), impróprias (numerador maior ou igual ao denominador) e aparentes (representam números inteiros).</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Soma de Frações com Denominadores Iguais):</h4>
+                <p><strong>Problema:</strong> Some 1/4 + 2/4.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Quando os denominadores são iguais, somamos os numeradores e mantemos o denominador.</p>
+                <p>1/4 + 2/4 = (1 + 2) / 4 = 3/4.</p>
+                <p><strong>Resposta:</strong> 1/4 + 2/4 = 3/4.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Soma de Frações com Denominadores Diferentes):</h4>
+                <p><strong>Problema:</strong> Some 1/2 + 1/3.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>1. Encontre o Mínimo Múltiplo Comum (MMC) dos denominadores (2 e 3). O MMC(2,3) = 6.</p>
+                <p>2. Transforme as frações para que tenham o denominador 6:</p>
+                <p>   Para 1/2: (6 ÷ 2) * 1 = 3 * 1 = 3. Então, 1/2 = 3/6.</p>
+                <p>   Para 1/3: (6 ÷ 3) * 1 = 2 * 1 = 2. Então, 1/3 = 2/6.</p>
+                <p>3. Some as novas frações: 3/6 + 2/6 = (3 + 2) / 6 = 5/6.</p>
+                <p><strong>Resposta:</strong> 1/2 + 1/3 = 5/6.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Calcule: 3/5 + 1/5 = ?</p>
+                <p>2. Calcule: 2/3 - 1/6 = ?</p>
+                <p>3. Se você comeu 1/4 de uma pizza e seu amigo comeu 2/4, que fração da pizza vocês comeram juntos?</p>
+                <p>(Mais operações com frações, como multiplicação, divisão, e exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="mmc-mdc-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Múltiplos, Divisores, MMC e MDC</h2>
+            <div class="explanation-block">
+                <h4>O que são Múltiplos e Divisores?</h4>
+                <p><strong>Múltiplos</strong> de um número natural são todos os números que resultam da multiplicação desse número por outros números naturais (0, 1, 2, 3,...). Por exemplo, os múltiplos de 3 são: 0 (3x0), 3 (3x1), 6 (3x2), 9 (3x3), e assim por diante.</p>
+                <p><strong>Divisores</strong> de um número natural são todos os números naturais pelos quais ele pode ser dividido de forma exata (sem deixar resto). Por exemplo, os divisores de 12 são: 1, 2, 3, 4, 6 e 12.</p>
+            </div>
+            <div class="explanation-block">
+                <h4>O que é MMC (Mínimo Múltiplo Comum)?</h4>
+                <p>O Mínimo Múltiplo Comum (MMC) de dois ou more números naturais é o menor múltiplo positivo comum a todos eles, excluindo o zero. É muito útil para somar ou subtrair frações com denominadores diferentes.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Cálculo do MMC):</h4>
+                <p><strong>Problema:</strong> Calcule o MMC de 4 e 6.</p>
+                <p><strong>Resolução (Método da Fatoração Simultânea):</strong></p>
+                <p>Dividimos os números pelos menores fatores primos possíveis:</p>
+                <p>4, 6 | 2 (ambos são divisíveis por 2)</p>
+                <p>2, 3 | 2 (o 2 é divisível por 2, o 3 repete)</p>
+                <p>1, 3 | 3 (o 3 é divisível por 3)</p>
+                <p>1, 1</p>
+                <p>Multiplicamos os fatores primos obtidos: 2 x 2 x 3 = 12.</p>
+                <p><strong>Resposta:</strong> O MMC(4, 6) = 12.</p>
+            </div>
+            <div class="explanation-block">
+                <h4>O que é MDC (Máximo Divisor Comum)?</h4>
+                <p>O Máximo Divisor Comum (MDC) de dois ou mais números naturais é o maior número que divide todos eles de forma exata. É útil para simplificar frações ou resolver problemas de divisão em partes iguais.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Cálculo do MDC):</h4>
+                <p><strong>Problema:</strong> Calcule o MDC de 12 e 18.</p>
+                <p><strong>Resolução (Método da Fatoração Simultânea):</strong></p>
+                <p>Dividimos os números pelos fatores primos que dividem AMBOS simultaneamente:</p>
+                <p>12, 18 | 2 (ambos são divisíveis por 2)</p>
+                <p>6,  9  | 3 (ambos são divisíveis por 3)</p>
+                <p>2,  3  | (Não há mais divisores comuns além de 1)</p>
+                <p>Multiplicamos os fatores primos comuns obtidos: 2 x 3 = 6.</p>
+                <p><strong>Resposta:</strong> O MDC(12, 18) = 6.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Quais são os 5 primeiros múltiplos de 7 (excluindo o zero)?</p>
+                <p>2. Quais são todos os divisores de 20?</p>
+                <p>3. Calcule o MMC(8, 10).</p>
+                <p>4. Calcule o MDC(24, 36).</p>
+                <p>(Mais exemplos e exercícios interativos serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+
+        <!-- Nível 3: Avançado -->
+        <section id="equacoes1-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Equações do 1º Grau</h2>
+            <div class="explanation-block">
+                <h4>O que são Equações do 1º Grau?</h4>
+                <p>Uma equação do 1º grau (ou equação linear) é uma sentença matemática que estabelece uma igualdade entre duas expressões, onde a incógnita (geralmente representada por "x" ou outra letra) tem o maior expoente igual a 1. A forma geral de uma equação do 1º grau com uma incógnita é <strong>ax + b = 0</strong>, onde "a" e "b" são números reais e "a" deve ser diferente de zero.</p>
+                <p>Resolver uma equação do 1º grau significa encontrar o valor da incógnita que torna a igualdade verdadeira.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido:</h4>
+                <p><strong>Problema:</strong> Resolva a equação 2x - 6 = 4.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>1. Isole o termo com a incógnita (2x) em um lado da igualdade. Para isso, adicione 6 aos dois lados da equação:</p>
+                <p>   2x - 6 + 6 = 4 + 6</p>
+                <p>   2x = 10</p>
+                <p>2. Agora, para encontrar o valor de x, divida ambos os lados da equação por 2 (o coeficiente de x):</p>
+                <p>   2x / 2 = 10 / 2</p>
+                <p>   x = 5</p>
+                <p><strong>Verificação (substituindo x=5 na equação original):</strong></p>
+                <p>   2(5) - 6 = 4</p>
+                <p>   10 - 6 = 4</p>
+                <p>   4 = 4 (A igualdade é verdadeira)</p>
+                <p><strong>Resposta:</strong> A solução da equação é x = 5.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Resolva: 3x + 5 = 14</p>
+                <p>2. Resolva: 4y - 7 = 2y + 3</p>
+                <p>3. O dobro de um número, aumentado de 15, é igual a 49. Qual é esse número?</p>
+                <p>(Mais exemplos e problemas envolvendo equações do 1º grau serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="equacoes2-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Equações do 2º Grau</h2>
+            <div class="explanation-block">
+                <h4>O que são Equações do 2º Grau?</h4>
+                <p>Uma equação do 2º grau (ou equação quadrática) na incógnita x é toda equação que pode ser escrita na forma <strong>ax² + bx + c = 0</strong>, onde "a", "b" e "c" são números reais chamados coeficientes, com "a" diferente de zero. O termo "ax²" é o termo quadrático, "bx" é o termo linear e "c" é o termo independente.</p>
+                <p>Resolver uma equação do 2º grau significa encontrar os valores de x (chamados de raízes da equação) que tornam a igualdade verdadeira. Uma equação do 2º grau pode ter até duas raízes reais.</p>
+                <p>A fórmula de Bhaskara é comumente usada para encontrar as raízes: <strong>x = [-b ± √(b² - 4ac)] / 2a</strong>. A expressão dentro da raiz quadrada, Δ = b² - 4ac, é chamada de discriminante.</p>
+                <ul>
+                    <li>Se Δ > 0, a equação tem duas raízes reais e distintas.</li>
+                    <li>Se Δ = 0, a equação tem duas raízes reais e iguais (uma raiz real dupla).</li>
+                    <li>Se Δ < 0, a equação não tem raízes reais.</li>
+                </ul>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Usando Bhaskara):</h4>
+                <p><strong>Problema:</strong> Resolva a equação x² - 5x + 6 = 0.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>1. Identifique os coeficientes: a = 1, b = -5, c = 6.</p>
+                <p>2. Calcule o discriminante (Δ):</p>
+                <p>   Δ = b² - 4ac</p>
+                <p>   Δ = (-5)² - 4 * 1 * 6</p>
+                <p>   Δ = 25 - 24</p>
+                <p>   Δ = 1</p>
+                <p>3. Como Δ > 0, temos duas raízes reais e distintas. Aplique a fórmula de Bhaskara:</p>
+                <p>   x = [-b ± √Δ] / 2a</p>
+                <p>   x = [-(-5) ± √1] / (2 * 1)</p>
+                <p>   x = [5 ± 1] / 2</p>
+                <p>4. Calcule as duas raízes:</p>
+                <p>   x' = (5 + 1) / 2 = 6 / 2 = 3</p>
+                <p>   x'' = (5 - 1) / 2 = 4 / 2 = 2</p>
+                <p><strong>Resposta:</strong> As raízes da equação são x = 2 e x = 3.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Resolva a equação: x² - 7x + 10 = 0</p>
+                <p>2. Resolva a equação: 2x² + 3x - 2 = 0</p>
+                <p>3. Determine o valor de k para que a equação x² - kx + 9 = 0 tenha uma raiz real dupla.</p>
+                <p>(Mais exemplos, métodos de resolução como soma e produto, e problemas serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="funcao-afim-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Função Afim (Função do 1º Grau)</h2>
+            <div class="explanation-block">
+                <h4>O que é uma Função Afim?</h4>
+                <p>Uma função afim, também conhecida como função polinomial do 1º grau, é toda função que pode ser escrita na forma <strong>f(x) = ax + b</strong> (ou y = ax + b), onde "a" e "b" são números reais chamados coeficientes. O coeficiente "a" é chamado de coeficiente angular ou taxa de variação, e deve ser diferente de zero. O coeficiente "b" é chamado de coeficiente linear ou termo independente, e representa o valor da função quando x = 0 (o ponto onde o gráfico corta o eixo y).</p>
+                <p>O gráfico de uma função afim é sempre uma reta não paralela aos eixos x ou y.</p>
+                <ul>
+                    <li>Se a > 0, a função é crescente (a reta sobe da esquerda para a direita).</li>
+                    <li>Se a < 0, a função é decrescente (a reta desce da esquerda para a direita).</li>
+                </ul>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Encontrando a Lei da Função):</h4>
+                <p><strong>Problema:</strong> Uma função afim f(x) = ax + b é tal que f(1) = 5 e f(2) = 8. Determine a lei dessa função.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>1. Use os pontos dados para montar um sistema de equações:</p>
+                <p>   Para f(1) = 5: a(1) + b = 5  =>  a + b = 5  (Equação I)</p>
+                <p>   Para f(2) = 8: a(2) + b = 8  =>  2a + b = 8 (Equação II)</p>
+                <p>2. Resolva o sistema. Podemos subtrair a Equação I da Equação II:</p>
+                <p>   (2a + b) - (a + b) = 8 - 5</p>
+                <p>   2a + b - a - b = 3</p>
+                <p>   a = 3</p>
+                <p>3. Substitua o valor de "a" em uma das equações originais (por exemplo, na Equação I) para encontrar "b":</p>
+                <p>   a + b = 5</p>
+                <p>   3 + b = 5</p>
+                <p>   b = 5 - 3</p>
+                <p>   b = 2</p>
+                <p><strong>Resposta:</strong> A lei da função é f(x) = 3x + 2.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Raiz da Função):</h4>
+                <p><strong>Problema:</strong> Encontre a raiz da função f(x) = 2x - 4.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>A raiz de uma função é o valor de x para o qual f(x) = 0.</p>
+                <p>   2x - 4 = 0</p>
+                <p>   2x = 4</p>
+                <p>   x = 4 / 2</p>
+                <p>   x = 2</p>
+                <p><strong>Resposta:</strong> A raiz da função f(x) = 2x - 4 é x = 2. (Este é o ponto onde o gráfico corta o eixo x).</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Dada a função f(x) = -2x + 6, determine: a) Se ela é crescente ou decrescente. b) O coeficiente angular. c) O coeficiente linear. d) A raiz da função.</p>
+                <p>2. O preço a ser pago por uma corrida de táxi inclui uma parcela fixa de R$ 5,00 (bandeirada) mais R$ 2,00 por quilômetro rodado. Escreva a função que representa o preço P de uma corrida em função de x quilômetros rodados.</p>
+                <p>(Mais exemplos, construção de gráficos e problemas serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="razao-proporcao-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Razão e Proporção</h2>
+            <div class="explanation-block">
+                <h4>O que é Razão?</h4>
+                <p>Razão entre duas grandezas (com a segunda diferente de zero) é o quociente (divisão) entre os números que expressam essas grandezas, na ordem em que são apresentadas. Se temos duas grandezas A e B, a razão entre A e B é A/B ou A:B.</p>
+                <p>Por exemplo, se em uma sala há 10 meninos e 20 meninas, a razão entre o número de meninos e o número de meninas é 10/20, que simplificando é 1/2 (ou seja, para cada menino, há duas meninas).</p>
+            </div>
+            <div class="explanation-block">
+                <h4>O que é Proporção?</h4>
+                <p>Proporção é a igualdade entre duas razões. Se a razão A/B é igual à razão C/D, então A/B = C/D forma uma proporção. Lê-se: "A está para B assim como C está para D".</p>
+                <p>Em uma proporção A/B = C/D, os números A e D são chamados de "extremos" e os números B e C são chamados de "meios". A propriedade fundamental das proporções diz que "o produto dos extremos é igual ao produto dos meios": A * D = B * C.</p>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Encontrando Termo Desconhecido na Proporção):</h4>
+                <p><strong>Problema:</strong> Encontre o valor de x na proporção 2/5 = x/15.</p>
+                <p><strong>Resolução (Usando a Propriedade Fundamental):</strong></p>
+                <p>Produto dos extremos = Produto dos meios</p>
+                <p>2 * 15 = 5 * x</p>
+                <p>30 = 5x</p>
+                <p>x = 30 / 5</p>
+                <p>x = 6</p>
+                <p><strong>Resposta:</strong> O valor de x é 6.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Em uma receita de bolo, a razão entre a quantidade de farinha e a quantidade de açúcar é de 3 para 2 (3/2). Se forem usadas 6 xícaras de farinha, quantas xícaras de açúcar devem ser usadas?</p>
+                <p>2. Verifique se os números (2, 4, 5, 10), nessa ordem, formam uma proporção.</p>
+                <p>3. A escala de um mapa é 1:500.000. Se a distância entre duas cidades no mapa é de 5 cm, qual a distância real entre elas em quilômetros?</p>
+                <p>(Mais exemplos e problemas envolvendo razão e proporção serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+        <section id="geometria-section" class="content-section">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Área, Perímetro e Volume (Figuras Geométricas)</h2>
+            <div class="explanation-block">
+                <h4>O que é Perímetro?</h4>
+                <p>Perímetro é a medida do contorno de uma figura geométrica plana. É a soma das medidas de todos os lados da figura.</p>
+                <p><strong>Exemplo (Quadrado):</strong> Se um quadrado tem lado de 5 cm, seu perímetro é 5 + 5 + 5 + 5 = 20 cm (ou 4 x 5 cm).</p>
+                <p><strong>Exemplo (Retângulo):</strong> Se um retângulo tem base de 8 cm e altura de 3 cm, seu perímetro é 8 + 3 + 8 + 3 = 22 cm (ou 2*(8+3) cm).</p>
+            </div>
+            <div class="explanation-block">
+                <h4>O que é Área?</h4>
+                <p>Área é a medida da superfície de uma figura geométrica plana. Ela nos diz quanto espaço a figura ocupa.</p>
+                <p><strong>Exemplos de Fórmulas de Área:</strong></p>
+                <ul>
+                    <li><strong>Quadrado:</strong> Área = Lado x Lado (L²)</li>
+                    <li><strong>Retângulo:</strong> Área = Base x Altura (b * h)</li>
+                    <li><strong>Triângulo:</strong> Área = (Base x Altura) / 2</li>
+                    <li><strong>Círculo:</strong> Área = π * Raio² (πr²), onde π (pi) é aproximadamente 3,14159.</li>
+                </ul>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Área de um Retângulo):</h4>
+                <p><strong>Problema:</strong> Calcule a área de um terreno retangular com 10 metros de base e 7 metros de altura.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Área do Retângulo = Base x Altura</p>
+                <p>Área = 10 m * 7 m</p>
+                <p>Área = 70 m² (metros quadrados)</p>
+                <p><strong>Resposta:</strong> A área do terreno é de 70 m².</p>
+            </div>
+            <div class="explanation-block">
+                <h4>O que é Volume?</h4>
+                <p>Volume é a medida do espaço ocupado por um sólido geométrico (uma figura tridimensional). Ele nos diz quanta capacidade o sólido tem.</p>
+                <p><strong>Exemplos de Fórmulas de Volume:</strong></p>
+                <ul>
+                    <li><strong>Cubo:</strong> Volume = Aresta x Aresta x Aresta (A³)</li>
+                    <li><strong>Paralelepípedo Retângulo:</strong> Volume = Comprimento x Largura x Altura (c * l * h)</li>
+                    <li><strong>Cilindro:</strong> Volume = Área da Base x Altura (πr² * h)</li>
+                    <li><strong>Esfera:</strong> Volume = (4/3) * π * Raio³</li>
+                </ul>
+            </div>
+            <div class="example-block">
+                <h4>Exemplo Resolvido (Volume de um Cubo):</h4>
+                <p><strong>Problema:</strong> Calcule o volume de uma caixa cúbica com aresta de 3 cm.</p>
+                <p><strong>Resolução:</strong></p>
+                <p>Volume do Cubo = Aresta³</p>
+                <p>Volume = 3 cm * 3 cm * 3 cm</p>
+                <p>Volume = 27 cm³ (centímetros cúbicos)</p>
+                <p><strong>Resposta:</strong> O volume da caixa é de 27 cm³.</p>
+            </div>
+            <div class="exercise-block">
+                <h4>Exercícios Práticos:</h4>
+                <p>1. Calcule o perímetro de um triângulo equilátero com lado de 6 cm.</p>
+                <p>2. Calcule a área de um círculo com raio de 5 cm (use π ≈ 3,14).</p>
+                <p>3. Calcule o volume de um paralelepípedo com comprimento de 8m, largura de 4m e altura de 2m.</p>
+                <p>(Mais exemplos de diferentes figuras, unidades de medida e problemas serão adicionados aqui com JavaScript)</p>
+            </div>
+        </section>
+
+        <!-- Funcionalidades Interativas -->
+        <section id="treino-section" class="content-section training-area">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Sistema de Treino</h2>
+            <p>Gere contas aleatórias para resolver e teste seus conhecimentos!</p>
+            <div class="training-question" id="training-question-text">Clique em "Gerar" para começar!</div>
+            <input type="number" id="training-answer" class="training-input" placeholder="Sua Resposta">
+            <button class="btn btn-primary" id="submit-training-answer">Verificar</button>
+            <button class="btn btn-secondary" id="generate-training-question">Gerar Nova</button>
+            <div class="training-feedback" id="training-feedback-text"></div>
+        </section>
+
+        <section id="rabiscar-section" class="content-section scribble-area-container">
+            <button class="btn btn-back" data-section="home-section"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2>Área de Rabisco</h2>
+            <p>Use este espaço para fazer seus cálculos e anotações livremente.</p>
+            <div class="scribble-controls">
+                <button class="btn btn-sm btn-secondary" id="clear-canvas-btn">Limpar Rabisco</button>
+                <!-- Adicionar controles de cor, espessura do pincel, etc. se desejar -->
+            </div>
+            <canvas id="scribbleCanvas" width="600" height="400"></canvas>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Matemática+ | Desenvolvido com 🧠 por Manus IA</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

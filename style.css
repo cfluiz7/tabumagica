@@ -1,0 +1,561 @@
+/* Conteúdo CSS aprimorado (style.css_updated) */
+
+/*
+  Matemática Mágica - Folha de Estilos Principal
+  Foco: Mobile-first, Design Moderno, Responsivo e Acessível
+  Autor: Manus IA
+  Data: 13 de Maio de 2025
+*/
+
+/* === Variáveis Globais de Cores e Fontes === */
+:root {
+    --primary-color: #6a5acd; /* Lilás Principal (Roxo Suave) */
+    --secondary-color: #ff6b6b; /* Coral Secundário (Para Destaques e Alertas Positivos) */
+    --accent-color-1: #4ecdc4; /* Turquesa (Para Elementos de Interação e Destaques Visuais) */
+    --accent-color-2: #ffbe0b; /* Amarelo Ouro (Para Chamadas à Ação e Ícones) */
+    --accent-color-3: #fb5607; /* Laranja Queimado (Para Avisos e Elementos de Urgência Moderada) */
+
+    --background-light: #f8f9fa; /* Branco Suave (Fundo Principal de Conteúdo) */
+    --background-medium: #e9ecef; /* Cinza Claro (Fundo Secundário, Divisores) */
+    --text-dark: #343a40; /* Cinza Escuro (Texto Principal) */
+    --text-light: #ffffff; /* Branco (Texto sobre fundos escuros) */
+    --text-muted: #6c757d; /* Cinza Médio (Texto Secundário, Dicas) */
+
+    --success-color: #28a745; /* Verde Sucesso (Feedback Positivo) */
+    --error-color: #dc3545; /* Vermelho Erro (Feedback Negativo) */
+    --warning-color: #ffc107; /* Amarelo Aviso */
+
+    --font-primary: 'Nunito', sans-serif; /* Fonte Principal (Legível e Moderna) */
+    --font-headings: 'Poppins', sans-serif; /* Fonte para Títulos (Impactante e Clara) - Adicionar @import no HTML */
+
+    --border-radius-small: 4px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 16px;
+    --border-radius-round: 50px;
+
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 12px 35px rgba(0, 0, 0, 0.12);
+
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem;  /* 8px */
+    --spacing-md: 1rem;    /* 16px */
+    --spacing-lg: 1.5rem;  /* 24px */
+    --spacing-xl: 2rem;    /* 32px */
+    --spacing-xxl: 3rem;   /* 48px */
+}
+
+/* === Reset Básico e Configurações Globais === */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%; /* Garante que 1rem = 16px por padrão, facilita responsividade */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-medium);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Previne scroll horizontal indesejado */
+    -webkit-font-smoothing: antialiased; /* Melhora renderização de fontes em Webkit */
+    -moz-osx-font-smoothing: grayscale; /* Melhora renderização de fontes em Firefox */
+}
+
+/* === Estilos de Tipografia === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headings);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+h1 { font-size: 2.5rem; } /* Ajustado para mobile first */
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+p { margin-bottom: var(--spacing-md); font-size: 1rem; }
+a { color: var(--primary-color); text-decoration: none; transition: color 0.2s ease-in-out; }
+a:hover, a:focus { color: var(--accent-color-1); text-decoration: underline; }
+
+/* === Layout Principal e Contêineres === */
+.container {
+    width: 90%;
+    max-width: 1100px; /* Limite para telas maiores */
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--spacing-lg) 0;
+}
+
+/* Esconder seções por padrão, JavaScript controlará a visibilidade */
+.content-section {
+    display: none; /* Escondido por padrão */
+    padding: var(--spacing-lg);
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    margin-bottom: var(--spacing-lg);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.content-section.active {
+    display: block; /* Mostra a seção ativa */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Cabeçalho e Navegação === */
+.main-header {
+    background: linear-gradient(135deg, var(--primary-color), #836FFF);
+    color: var(--text-light);
+    padding: var(--spacing-md) 0; /* Padding vertical no container */
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0; /* Remover padding do container interno */
+    padding-bottom: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon { /* Exemplo: usar um SVG ou Font Icon */
+    font-size: 2rem;
+    margin-right: var(--spacing-sm);
+    /* Adicionar animação se desejado, como no original */
+}
+
+.logo-text {
+    font-family: var(--font-headings);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.main-nav {
+    display: none; /* Escondido em mobile, controlado por JS */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Abaixo do header */
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), #836FFF);
+    box-shadow: var(--shadow-soft);
+    padding: var(--spacing-md);
+}
+
+.main-nav.active {
+    display: flex;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.main-nav li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.main-nav a {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: block;
+    border-radius: var(--border-radius-medium);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.main-nav a:hover,
+.main-nav a:focus,
+.main-nav .nav-item-active a { /* Estilo para item ativo */
+    background-color: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+}
+
+.nav-toggle-btn { /* Botão Hamburger */
+    display: block; /* Visível em mobile */
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.8rem; /* Tamanho do ícone */
+    cursor: pointer;
+    padding: var(--spacing-xs);
+}
+
+/* === Botões === */
+.btn {
+    display: inline-flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 0.75rem 1.5rem; /* Bom para toque */
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    border-radius: var(--border-radius-round);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.25s ease-in-out;
+    border: 2px solid transparent;
+    text-decoration: none; /* Para links estilizados como botões */
+}
+
+.btn:hover, .btn:focus {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    text-decoration: none;
+}
+
+.btn:active {
+    transform: translateY(0px);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #5849b2; /* Tom mais escuro do primário */
+    border-color: #5849b2;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border-color: var(--secondary-color);
+}
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: #e95a5a; /* Tom mais escuro do secundário */
+    border-color: #e95a5a;
+}
+
+.btn-accent {
+    background-color: var(--accent-color-2);
+    color: var(--text-dark);
+    border-color: var(--accent-color-2);
+}
+.btn-accent:hover, .btn-accent:focus {
+    background-color: #eab00a; /* Tom mais escuro do accent-2 */
+    border-color: #eab00a;
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.btn-back { /* Botão Voltar específico */
+    background-color: var(--text-muted);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg); /* Espaçamento abaixo do botão voltar */
+}
+.btn-back:hover, .btn-back:focus {
+    background-color: var(--text-dark);
+}
+.btn-back i { /* Para ícone de voltar */
+    margin-right: var(--spacing-xs);
+}
+
+/* === Seção Hero (Página Inicial) === */
+.hero-section {
+    text-align: center;
+    padding: var(--spacing-xxl) var(--spacing-md);
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('placeholder-hero-bg.jpg') no-repeat center center/cover; /* Imagem de fundo placeholder */
+    color: var(--text-light); /* Texto claro para contraste com fundo escuro */
+    border-radius: var(--border-radius-large);
+    margin-bottom: var(--spacing-lg);
+}
+.hero-section h1 {
+    font-size: 2.8rem; /* Maior para destaque */
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-lg) auto;
+    color: rgba(255,255,255,0.9);
+}
+
+/* === Estrutura de Conteúdo (Níveis e Categorias) === */
+.level-title { /* Título para Nível 1, Nível 2, etc. */
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--accent-color-1);
+    display: inline-block;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: uma coluna */
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.category-card {
+    background-color: var(--background-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+.category-card:hover, .category-card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+.category-card-icon { /* Ícone para a categoria */
+    font-size: 3rem;
+    color: var(--accent-color-2);
+    margin-bottom: var(--spacing-md);
+}
+.category-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+.category-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* === Conteúdo Específico da Seção (Explicações, Exemplos, Exercícios) === */
+.explanation-block, .example-block, .exercise-block {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: #fff; /* Fundo branco para destaque dentro da seção */
+    border-radius: var(--border-radius-medium);
+    border-left: 5px solid var(--accent-color-1);
+}
+.explanation-block h4, .example-block h4, .exercise-block h4 {
+    color: var(--accent-color-1);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Sistema de Treino */
+.training-area {
+    text-align: center;
+}
+.training-question {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+}
+.training-input {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1.2rem;
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--text-muted);
+    margin-right: var(--spacing-sm);
+    width: 100px; /* Ajustar conforme necessário */
+    text-align: center;
+}
+.training-feedback {
+    margin-top: var(--spacing-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    min-height: 1.5em; /* Para evitar saltos de layout */
+}
+.feedback-correct { color: var(--success-color); }
+.feedback-incorrect { color: var(--error-color); }
+.feedback-tip { color: var(--text-muted); font-style: italic; }
+
+/* Área de Rabisco (Canvas) */
+.scribble-area-container {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+}
+#scribbleCanvas {
+    border: 2px dashed var(--accent-color-3);
+    border-radius: var(--border-radius-medium);
+    cursor: crosshair;
+    background-color: #fff; /* Fundo branco para o canvas */
+    max-width: 100%; /* Responsividade */
+}
+.scribble-controls button {
+    margin: var(--spacing-sm) var(--spacing-xs);
+}
+
+
+/* === Rodapé === */
+.main-footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+.main-footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* === Classes Utilitárias === */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.text-primary { color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.text-success { color: var(--success-color); }
+.text-error { color: var(--error-color); }
+.text-warning { color: var(--warning-color); }
+.mt-1 { margin-top: var(--spacing-sm); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+
+/* === Media Queries para Responsividade === */
+
+/* Tablet (e telas maiores que mobile) */
+@media (min-width: 768px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.25rem; }
+    h3 { font-size: 1.9rem; }
+
+    .nav-toggle-btn {
+        display: none; /* Esconde o hamburger em telas maiores */
+    }
+    .main-nav {
+        display: flex;
+        flex-direction: row; /* Navegação horizontal */
+        position: static; /* Volta ao fluxo normal */
+        width: auto;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+    }
+    .main-nav ul {
+        display: flex;
+        gap: var(--spacing-sm);
+    }
+    .main-nav li {
+        margin-bottom: 0;
+    }
+    .main-nav a {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    .main-nav a:hover,
+    .main-nav a:focus,
+    .main-nav .nav-item-active a {
+        background-color: transparent; /* Remove fundo em hover para desktop, usa sublinhado ou outra indicação */
+        color: var(--accent-color-2); /* Cor de destaque para hover/ativo */
+        text-decoration: underline;
+    }
+
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas para tablets */
+    }
+
+    .hero-section h1 { font-size: 3.5rem; }
+    .hero-section p { font-size: 1.3rem; }
+}
+
+/* Desktop (e telas maiores) */
+@media (min-width: 1024px) {
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; }
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* Três colunas para desktops */
+    }
+}
+
+/*
+  Estilos do arquivo original (tabumagica (1).html) que podem ser úteis ou precisam ser adaptados/integrados:
+  - .background-shapes e animação .shape: Pode ser mantido para um toque visual sutil.
+  - Estilos específicos de .tabuada-card, .game-card, .learn-tabuada-content, .game-interface:
+    Precisarão ser revisados e adaptados para a nova estrutura de seções e classes.
+    O conceito de mostrar/esconder conteúdo (.learn-tabuada-content, .game-interface) será gerenciado
+    pela classe .content-section e JavaScript.
+  - Paleta de cores original: As variáveis de cores foram redefinidas para maior clareza e consistência,
+    mas os tons originais podem ser referenciados se necessário.
+    --primary: #6a5acd;
+    --secondary: #ff6b6b;
+    --accent1: #4ecdc4;
+    --accent2: #ffbe0b;
+    --accent3: #fb5607;
+    --light: #f8f9fa;
+    --dark: #343a40;
+  - Fonte 'Nunito': Mantida como --font-primary.
+  - Animações como 'bounce' e 'float': Podem ser mantidas se agregarem valor sem distrair.
+*/
+
+/* Adaptação de .background-shapes do original */
+.background-shapes {
+    position: fixed;
+    top:0; left:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10; /* Bem atrás de todo conteúdo */
+    overflow: hidden;
+    pointer-events: none; /* Não interfere com cliques */
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.05; /* Mais sutil */
+    animation: float 25s infinite ease-in-out alternate;
+}
+
+.shape.circle {
+    border-radius: 50%;
+    background-color: var(--accent-color-1);
+}
+
+.shape.square {
+    border-radius: 15%;
+    transform: rotate(15deg);
+    background-color: var(--accent-color-2);
+}
+/* Adicionar mais formas se necessário */
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    50% { transform: translate(20px, 30px) rotate(15deg) scale(1.05); }
+    100% { transform: translate(-10px, -15px) rotate(-10deg) scale(0.95); }
+}
+
+/* Adicionar aqui mais estilos específicos para as seções de matemática conforme forem sendo construídas */
+/* Ex: .soma-section, .multiplicacao-section, etc. */
+
