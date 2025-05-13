@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TabuMágica - Aprenda Tabuada de Forma Divertida!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a5acd; /* Lilás Principal */
+            --secondary: #ff6b6b; /* Coral Secundário */
+            --accent1: #4ecdc4; /* Turquesa */
+            --accent2: #ffbe0b; /* Amarelo Ouro */
+            --accent3: #fb5607; /* Laranja Queimado */
+            --light: #f8f9fa; /* Branco Suave */
+            --dark: #343a40; /* Cinza Escuro */
+            --success: #43aa8b; /* Verde Sucesso */
+            --error: #f94144; /* Vermelho Erro */
+            --font-family: 'Nunito', sans-serif; /* Nova fonte */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background: linear-gradient(120deg, #f0f2f5, #e9ecef);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .background-shapes {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out alternate;
+            z-index: -1;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+
+        .square {
+            border-radius: 15%;
+            transform: rotate(15deg);
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 100px solid var(--accent3);
+            background-color: transparent !important;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            50% { transform: translate(20px, 30px) rotate(15deg) scale(1.05); }
+            100% { transform: translate(-10px, -15px) rotate(-10deg) scale(0.95); }
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), #836FFF); /* Ajuste no gradiente */
+            color: white;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem; /* Aumentado */
+            font-weight: 900; /* Mais forte */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .logo-icon {
+            font-size: 2.5rem; /* Aumentado */
+            margin-right: 0.7rem;
+            animation: bounce 2.5s infinite ease-in-out;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .btn {
+            background-color: white;
+            color: var(--primary);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 7px 15px rgba(0,0,0,0.15);
+        }
+
+        .btn:active {
+            transform: translateY(0px) scale(0.98);
+        }
+
+        .btn-primary {
+            background-color: var(--accent2);
+            color: var(--dark);
+        }
+        .btn-primary:hover {
+            background-color: #ffc940;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #ff8a8a;
+        }
+
+        .btn-error {
+            background-color: var(--error);
+            color: white;
+        }
+        .btn-error:hover {
+            background-color: #ff6265;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 900;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 750px;
+            margin: 0 auto;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .sections {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .section {
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: white;
+        }
+
+        .section:hover {
+            transform: translateY(-8px);
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 3px solid var(--accent1);
+            padding-bottom: 0.5rem;
+            display: inline-block; /* Fit border to text */
+        }
+
+        .section-icon {
+            font-size: 2.2rem;
+            vertical-align: middle;
+        }
+
+        .section > p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .tabuadas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .tabuada-card {
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 20px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.07);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .tabuada-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+        }
+
+        .tabuada-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .tabuada-card:hover::before {
+            left: 100%;
+        }
+
+        .tabuada-number {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        /* Using theme colors for numbers */
+        .tabuada-card:nth-child(1) .tabuada-number { color: var(--secondary); }
+        .tabuada-card:nth-child(2) .tabuada-number { color: var(--accent1); }
+        .tabuada-card:nth-child(3) .tabuada-number { color: var(--accent2); }
+        .tabuada-card:nth-child(4) .tabuada-number { color: #34a853; } /* Google Green */
+        .tabuada-card:nth-child(5) .tabuada-number { color: #4285f4; } /* Google Blue */
+        .tabuada-card:nth-child(6) .tabuada-number { color: var(--primary); }
+        .tabuada-card:nth-child(7) .tabuada-number { color: var(--accent3); }
+        .tabuada-card:nth-child(8) .tabuada-number { color: #7c4dff; } /* Deep Purple */
+        .tabuada-card:nth-child(9) .tabuada-number { color: #ff9f1c; } /* Orange */
+        .tabuada-card:nth-child(10) .tabuada-number { color: var(--dark); }
+
+        .tabuada-preview {
+            font-size: 1rem;
+            color: #666;
+            opacity: 0.9;
+        }
+
+        .learn-tabuada-content {
+            display: none;
+            background-color: #fdfdff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: slideUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid #e0e0e0;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tabuada-detail h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .tabuada-detail > p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            text-align: center;
+            color: #555;
+        }
+
+        .tabuada-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .tabuada-item {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            border: 1px solid #eee;
+        }
+
+        .tabuada-item:hover {
+            background-color: var(--accent1);
+            color: white;
+            transform: scale(1.06);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .tabuada-trick {
+            background-color: #fff9e6;
+            border-left: 6px solid var(--accent2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(255, 190, 11, 0.1);
+        }
+
+        .tabuada-trick h4 {
+            color: var(--accent3);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .tabuada-trick p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #664d03;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background: linear-gradient(145deg, #ffffff, #f7f7f7);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: default; /* Remove cursor pointer from card */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            border-color: var(--secondary);
+        }
+
+        .game-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.1));
+        }
+
+        .game-card:nth-child(1) .game-icon { color: var(--accent1); }
+        .game-card:nth-child(2) .game-icon { color: var(--accent2); }
+        .game-card:nth-child(3) .game-icon { color: var(--accent3); }
+
+        .game-title {
+            font-size: 1.7rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .game-description {
+            color: #555;
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            flex-grow: 1; /* Push button down */
+        }
+
+        .play-btn {
+            /* Inherits from .btn, specific styles below */
+            background-color: var(--accent2);
+            color: var(--dark);
+            padding: 0.8rem 1.8rem;
+            font-size: 1.2rem;
+            margin-top: auto; /* Stick to bottom */
+            cursor: pointer; /* Add cursor pointer to button */
+        }
+
+        .play-btn:hover {
+            background-color: var(--accent3);
+            color: white;
+            transform: translateY(-4px) scale(1.03); /* Inherited hover needs adjustment */
+            box-shadow: 0 7px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Game interface */
+        .game-interface {
+            display: none;
+            background-color: #fdfdff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.6s ease-out;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .game-score, .game-timer, .game-streak {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+        }
+        .game-timer { color: var(--accent3); }
+        .game-streak { color: var(--accent2); }
+
+        .question-container {
+            margin-bottom: 2.5rem;
+        }
+
+        .question {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .option-btn {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 15px;
+            padding: 1.2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            border-color: var(--accent1);
+            color: var(--accent1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .feedback {
+            margin-top: 2rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            min-height: 2.5rem; /* Ensure space */
+            padding: 0.5rem;
+        }
+
+        .correct {
+            color: var(--success);
+        }
+
+        .incorrect {
+            color: var(--error);
+        }
+
+        .game-controls {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* Hand Trick Styling */
+        .hand-trick {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 2.5rem 0;
+            padding: 1rem;
+            background-color: #f0e8ff;
+            border-radius: 15px;
+        }
+
+        .finger {
+            width: 35px;
+            height: 130px;
+            background-color: #ffdbac; /* Skin tone */
+            border: 1px solid #e0b98a;
+            border-radius: 18px 18px 10px 10px; /* Fingertip shape */
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1);
+        }
+        .finger:hover {
+            background-color: #fcd09c;
+        }
+
+        .finger::before { /* Nail */
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 5px 5px 3px 3px;
+            opacity: 0.5;
+        }
+
+        .finger.folded {
+            height: 70px;
+            transform: translateY(60px) rotate(5deg);
+            background-color: #e0b98a;
+            box-shadow: inset 0 5px 5px rgba(0,0,0,0.15);
+        }
+
+        .finger-number {
+            position: absolute;
+            bottom: 5px; /* Position number at base */
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: var(--dark);
+            font-size: 0.9rem;
+            background-color: rgba(255,255,255,0.7);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+        .finger.folded .finger-number {
+            opacity: 0.5;
+        }
+
+        .hand-result {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            padding: 0.8rem;
+            background-color: var(--light);
+            border-radius: 10px;
+            color: var(--primary);
+            min-height: 2.5rem;
+        }
+
+        /* Confetti Animation */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 15px; /* Rectangular confetti */
+            background-color: var(--primary); /* Default color */
+            opacity: 0.9;
+            /* Animation set by JS */
+        }
+
+        /* Practice Mode Checkboxes */
+        .practice-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .practice-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #f8f9fa;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .practice-options label:hover {
+            background-color: #f0f2f5;
+            border-color: #ccc;
+        }
+
+        .practice-options input[type="checkbox"] {
+            appearance: none;
+            width: 1.5em;
+            height: 1.5em;
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s ease;
+        }
+
+        .practice-options input[type="checkbox"]:checked {
+            background-color: var(--primary);
+        }
+
+        .practice-options input[type="checkbox"]:checked::after {
+            content: "\2714"; /* Checkmark */
+            font-size: 1.2em;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .tabuadas-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.2rem; }
+            .games-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+            .options-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .section { padding: 2rem; }
+            .section h2 { font-size: 1.8rem; }
+            .tabuada-detail h3 { font-size: 2rem; }
+            .question { font-size: 2.5rem; }
+            .option-btn { font-size: 1.5rem; padding: 1rem; }
+            .hand-trick { flex-wrap: wrap; gap: 0.5rem; }
+            .finger { width: 30px; height: 110px; }
+            .finger.folded { height: 60px; transform: translateY(50px); }
+            header { padding: 0.8rem 1rem; }
+            .logo { font-size: 1.6rem; }
+            .logo-icon { font-size: 2rem; }
+            .btn { padding: 0.6rem 1.2rem; font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 15px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .logo { font-size: 1.4rem; }
+            .logo-icon { font-size: 1.8rem; }
+            .nav-buttons { gap: 0.8rem; }
+            .btn { padding: 0.5rem 1rem; font-size: 0.9rem; gap: 0.4rem; }
+            .section { padding: 1.5rem; }
+            .section h2 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+            .tabuadas-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .tabuada-card { padding: 1.2rem; }
+            .tabuada-number { font-size: 2.2rem; }
+            .tabuada-preview { font-size: 0.8rem; }
+            .tabuada-detail h3 { font-size: 1.8rem; }
+            .tabuada-item { font-size: 1.1rem; padding: 0.8rem; }
+            .games-grid { grid-template-columns: 1fr; }
+            .game-card { padding: 1.5rem; }
+            .game-title { font-size: 1.4rem; }
+            .game-description { font-size: 1rem; }
+            .play-btn { font-size: 1rem; padding: 0.7rem 1.5rem; }
+            .game-header { flex-direction: column; gap: 0.8rem; align-items: stretch; }
+            .game-score, .game-timer, .game-streak { font-size: 1.1rem; text-align: center; }
+            .question { font-size: 2rem; }
+            .option-btn { font-size: 1.3rem; padding: 0.8rem; }
+            .feedback { font-size: 1.3rem; }
+            .hand-trick { gap: 0.4rem; }
+            .finger { width: 25px; height: 90px; }
+            .finger.folded { height: 50px; transform: translateY(40px); }
+            .finger-number { font-size: 0.7rem; }
+            .hand-result { font-size: 1.3rem; }
+            .practice-options { grid-template-columns: 1fr; }
+        }
+
+        /* Additional Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--success-rgb), 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(var(--success-rgb), 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--success-rgb), 0); }
+        }
+
+        .pulse {
+            /* Define --success-rgb for the animation */
+            --success-rgb: 67, 170, 139;
+            animation: pulse 1s ease-out;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .shake {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes tada {
+            from { transform: scale3d(1, 1, 1); }
+            10%, 20% { transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); }
+            30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+            40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+            to { transform: scale3d(1, 1, 1); }
+        }
+
+        .tada {
+            animation: tada 1s;
+        }
+
+        /* Mascot Placeholder */
+        .mascot {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-size: 4rem;
+            transition: transform 0.3s ease;
+            z-index: 900;
+            filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.2));
+        }
+        .mascot:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        @media (max-width: 768px) {
+            .mascot { font-size: 3rem; bottom: 10px; right: 10px; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Shapes -->
+    <div class="background-shapes">
+        <div class="shape circle" style="width:150px; height:150px; background-color:var(--accent1);"></div>
+        <div class="shape square" style="width:100px; height:100px; background-color:var(--accent2);"></div>
+        <div class="shape triangle" style="border-bottom-color: var(--accent3);"></div>
+        <div class="shape circle" style="width:200px; height:200px; background-color:var(--secondary);"></div>
+        <div class="shape square" style="width:120px; height:120px; background-color:var(--primary);"></div>
+        <div class="shape circle" style="width:80px; height:80px; background-color:var(--accent1);"></div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- Mascot Placeholder -->
+    <div class="mascot" id="mascot">🦉</div> <!-- Coruja como mascote -->
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">🧙
+
+
+</span>
+            TabuMágica
+        </div>
+        <div class="nav-buttons">
+            <button class="btn btn-primary" id="learn-btn">
+                <span class="btn-icon">📚</span> Aprender
+            </button>
+            <button class="btn btn-secondary" id="play-btn">
+                <span class="btn-icon">🎮</span> Jogar
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <h1>Aprenda Tabuada de um Jeito Mágico! ✨</h1>
+            <p>Descubra truques incríveis para memorizar a tabuada e divirta-se com jogos interativos que transformam o aprendizado em uma aventura!</p>
+        </section>
+
+        <div class="sections">
+            <!-- Learn Section -->
+            <section class="section" id="learn-section">
+                <h2><span class="section-icon">📚</span> Aprenda com Mágica</h2>
+                <p>Escolha uma tabuada para descobrir truques especiais e visualizar os resultados:</p>
+
+                <div class="tabuadas-grid">
+                    <!-- Tabuada Cards 1-10 -->
+                    <div class="tabuada-card" data-tabuada="1">
+                        <div class="tabuada-number">1</div>
+                        <div class="tabuada-preview">1, 2, 3...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="2">
+                        <div class="tabuada-number">2</div>
+                        <div class="tabuada-preview">2, 4, 6...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="3">
+                        <div class="tabuada-number">3</div>
+                        <div class="tabuada-preview">3, 6, 9...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="4">
+                        <div class="tabuada-number">4</div>
+                        <div class="tabuada-preview">4, 8, 12...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="5">
+                        <div class="tabuada-number">5</div>
+                        <div class="tabuada-preview">5, 10, 15...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="6">
+                        <div class="tabuada-number">6</div>
+                        <div class="tabuada-preview">6, 12, 18...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="7">
+                        <div class="tabuada-number">7</div>
+                        <div class="tabuada-preview">7, 14, 21...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="8">
+                        <div class="tabuada-number">8</div>
+                        <div class="tabuada-preview">8, 16, 24...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="9">
+                        <div class="tabuada-number">9</div>
+                        <div class="tabuada-preview">9, 18, 27...</div>
+                    </div>
+                    <div class="tabuada-card" data-tabuada="10">
+                        <div class="tabuada-number">10</div>
+                        <div class="tabuada-preview">10, 20, 30...</div>
+                    </div>
+                </div>
+
+                <!-- Learn Tabuada Content - Will be populated dynamically -->
+                <div class="learn-tabuada-content" id="learn-content"></div>
+            </section>
+
+            <!-- Games Section -->
+            <section class="section" id="games-section">
+                <h2><span class="section-icon">🎮</span> Jogos Divertidos</h2>
+                <p>Coloque seus conhecimentos em prática com desafios rápidos e animados:</p>
+
+                <div class="games-grid">
+                    <!-- Game Cards -->
+                    <div class="game-card" data-game="speed">
+                        <div class="game-icon">⏱️</div>
+                        <div class="game-title">Desafio da Velocidade</div>
+                        <div class="game-description">Responda o máximo de perguntas em 60 segundos!</div>
+                        <button class="play-btn btn" data-game-type="speed">Jogar <span class="btn-icon">▶️</span></button>
+                    </div>
+                    <div class="game-card" data-game="streak">
+                        <div class="game-icon">🔥</div>
+                        <div class="game-title">Sequência Campeã</div>
+                        <div class="game-description">Quantas respostas corretas você consegue em sequência?</div>
+                        <button class="play-btn btn" data-game-type="streak">Jogar <span class="btn-icon">▶️</span></button>
+                    </div>
+                    <div class="game-card" data-game="practice">
+                        <div class="game-icon">🎯</div>
+                        <div class="game-title">Treino Personalizado</div>
+                        <div class="game-description">Escolha quais tabuadas você quer praticar!</div>
+                        <button class="play-btn btn" data-game-type="practice">Jogar <span class="btn-icon">▶️</span></button>
+                    </div>
+                </div>
+
+                <!-- Game Interface - Will be populated dynamically -->
+                <div class="game-interface" id="game-interface"></div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // DOM Elements
+        const learnBtn = document.getElementById('learn-btn');
+        const playBtn = document.getElementById('play-btn');
+        const learnSection = document.getElementById('learn-section');
+        const gamesSection = document.getElementById('games-section');
+        const learnContent = document.getElementById('learn-content');
+        const gameInterface = document.getElementById('game-interface');
+        const tabuadaCards = document.querySelectorAll('.tabuada-card');
+        const gameCards = document.querySelectorAll('.game-card');
+        const playButtons = document.querySelectorAll('.play-btn');
+        const confettiContainer = document.getElementById('confetti');
+        const mascot = document.getElementById('mascot');
+        const backgroundShapesContainer = document.querySelector('.background-shapes');
+
+        // Audio Elements (Using simple placeholders for now, replace with actual sounds)
+        const sounds = {
+            click: new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU" + Math.random().toString(36).substring(7)), // Placeholder
+            correct: new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU" + Math.random().toString(36).substring(7)), // Placeholder
+            incorrect: new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU" + Math.random().toString(36).substring(7)), // Placeholder
+            win: new Audio("data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU" + Math.random().toString(36).substring(7)) // Placeholder
+        };
+        Object.values(sounds).forEach(sound => { sound.volume = 0.2; });
+
+        // Sound Effect Function
+        function playSound(soundName) {
+            try {
+                const sound = sounds[soundName];
+                if (sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(e => console.warn("Audio play failed:", e));
+                }
+            } catch (e) {
+                console.warn("Could not play sound:", e);
+            }
+        }
+
+        // Mascot Messages
+        const mascotMessages = [
+            "Vamos aprender tabuada! 🦉",
+            "Multiplicar é super divertido!",
+            "Você consegue! Continue praticando!",
+            "Que tal um desafio agora?",
+            "Estou de olho no seu progresso! 😉"
+        ];
+        let messageInterval;
+        function showMascotMessage() {
+            if (mascot.querySelector('.mascot-bubble')) return; // Don't show if already showing
+
+            const message = mascotMessages[Math.floor(Math.random() * mascotMessages.length)];
+            const bubble = document.createElement('div');
+            bubble.className = 'mascot-bubble';
+            bubble.textContent = message;
+            bubble.style.position = 'absolute';
+            bubble.style.bottom = '110%';
+            bubble.style.right = '0';
+            bubble.style.background = 'white';
+            bubble.style.padding = '10px 15px';
+            bubble.style.borderRadius = '15px 15px 0 15px';
+            bubble.style.boxShadow = '2px 2px 5px rgba(0,0,0,0.1)';
+            bubble.style.fontSize = '1rem';
+            bubble.style.whiteSpace = 'nowrap';
+            bubble.style.opacity = '0';
+            bubble.style.transition = 'opacity 0.3s ease';
+            mascot.appendChild(bubble);
+
+            setTimeout(() => { bubble.style.opacity = '1'; }, 10);
+
+            setTimeout(() => {
+                bubble.style.opacity = '0';
+                setTimeout(() => bubble.remove(), 300);
+            }, 4000);
+        }
+        mascot.addEventListener('click', () => {
+            playSound('click');
+            showMascotMessage();
+            mascot.classList.add('tada');
+            setTimeout(() => mascot.classList.remove('tada'), 1000);
+        });
+        // Start random messages
+        messageInterval = setInterval(showMascotMessage, 15000); // Show every 15 seconds
+
+        // Dynamic Background Shapes
+        function createBackgroundShapes() {
+            const colors = ['--primary', '--secondary', '--accent1', '--accent2', '--accent3'];
+            const types = ['circle', 'square', 'triangle'];
+            backgroundShapesContainer.innerHTML = ''; // Clear existing
+            for (let i = 0; i < 8; i++) {
+                const shape = document.createElement('div');
+                const type = types[Math.floor(Math.random() * types.length)];
+                const colorVar = colors[Math.floor(Math.random() * colors.length)];
+                const size = Math.random() * 150 + 50; // 50px to 200px
+
+                shape.classList.add('shape', type);
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                shape.style.top = `${Math.random() * 90}%`;
+                shape.style.left = `${Math.random() * 90}%`;
+                shape.style.animationDuration = `${Math.random() * 10 + 15}s`; // 15s to 25s
+                shape.style.animationDelay = `${Math.random() * 5}s`;
+
+                if (type === 'triangle') {
+                    shape.style.width = '0';
+                    shape.style.height = '0';
+                    shape.style.borderLeft = `${size / 2}px solid transparent`;
+                    shape.style.borderRight = `${size / 2}px solid transparent`;
+                    shape.style.borderBottom = `${size * 0.866}px solid var(${colorVar})`;
+                    shape.style.backgroundColor = 'transparent';
+                } else {
+                    shape.style.backgroundColor = `var(${colorVar})`;
+                }
+                backgroundShapesContainer.appendChild(shape);
+            }
+        }
+        createBackgroundShapes(); // Initial creation
+
+        // Navigation
+        learnBtn.addEventListener('click', () => {
+            playSound('click');
+            learnSection.scrollIntoView({ behavior: 'smooth' });
+            hideGameInterface();
+            hideLearnContent();
+        });
+
+        playBtn.addEventListener('click', () => {
+            playSound('click');
+            gamesSection.scrollIntoView({ behavior: 'smooth' });
+            hideGameInterface();
+            hideLearnContent();
+        });
+
+        // Tabuada Content Data
+        const tabuadaData = {
+            1: {
+                title: "Tabuada do 1 - O Espelho Mágico!",
+                description: "Qualquer número que se olha no espelho do 'x 1' vê ele mesmo!",
+                trick: {
+                    title: "✨ Truque do Espelho",
+                    text: "Imagine que o 'x 1' é um espelho. Todo número que passa por ele continua igual! 1x1=1, 2x1=2, 3x1=3... Fácil, né?"
+                }
+            },
+            2: {
+                title: "Tabuada do 2 - Os Pares Divertidos!",
+                description: "Multiplicar por 2 é o mesmo que dobrar o número, ou somar ele com ele mesmo.",
+                trick: {
+                    title: "🕺 Truque do Dobro",
+                    text: "Pense em pares! 2x3 é o mesmo que 3+3, que dá 6. 2x7 é 7+7, que dá 14. Sempre resulta em um número par!"
+                }
+            },
+            3: {
+                title: "Tabuada do 3 - Saltos de Três!",
+                description: "A tabuada do 3 avança de três em três. Vamos pular juntos?",
+                trick: {
+                    title: "🐸 Truque dos Saltos",
+                    text: "Comece no 0 e dê pulos de 3 em 3: 3, 6, 9, 12, 15, 18, 21, 24, 27, 30. Outra dica: some os algarismos do resultado, sempre dará 3, 6 ou 9 (ex: 3x7=21 -> 2+1=3; 3x8=24 -> 2+4=6)."
+                }
+            },
+            4: {
+                title: "Tabuada do 4 - O Dobro do Dobro!",
+                description: "Multiplicar por 4 é como dobrar o número duas vezes.",
+                trick: {
+                    title: "👯 Truque do Dobro Duplo",
+                    text: "Quer saber 4x6? Dobre o 6 (6+6=12) e depois dobre o resultado (12+12=24). Então, 4x6=24! Funciona sempre!"
+                }
+            },
+            5: {
+                title: "Tabuada do 5 - Final 0 ou 5!",
+                description: "A tabuada do 5 é super fácil de reconhecer: os resultados sempre terminam em 0 ou 5.",
+                trick: {
+                    title: "🖐️ Truque do Relógio",
+                    text: "Pense nos minutos do relógio: 5, 10, 15, 20... Multiplicar por 5 é como contar de 5 em 5. Se o número multiplicado for par, termina em 0 (5x4=20). Se for ímpar, termina em 5 (5x7=35)."
+                }
+            },
+            6: {
+                title: "Tabuada do 6 - Par e Mágico!",
+                description: "Multiplicar um número par por 6 tem um truque especial!",
+                trick: {
+                    title: "🔮 Truque do Par Mágico",
+                    text: "Quando você multiplica 6 por um número PAR (2, 4, 6, 8), o resultado termina com esse mesmo número! Ex: 6x2=12, 6x4=24, 6x6=36, 6x8=48. Para os ímpares, some 6 ao resultado anterior (6x3 = 12+6 = 18)."
+                }
+            },
+            7: {
+                title: "Tabuada do 7 - O Desafio Divertido!",
+                description: "A tabuada do 7 pode parecer difícil, mas com prática e alguns truques, você domina!",
+                trick: {
+                    title: "🧩 Truque da Sequência (Requer Memorização)",
+                    text: "Uma forma é memorizar a sequência: 7, 14, 21, 28, 35, 42, 49, 56, 63, 70. Outro truque (para 7x8): Lembre-se da ordem 5, 6, 7, 8 -> 56 = 7x8! Pratique bastante essa tabuada nos jogos!"
+                }
+            },
+            8: {
+                title: "Tabuada do 8 - Dobro, Dobro, Dobro!",
+                description: "Multiplicar por 8 é como dobrar o número três vezes seguidas.",
+                trick: {
+                    title: "🧊 Truque do Triplo Dobro",
+                    text: "Quer saber 8x5? Dobre o 5 (5+5=10), dobre de novo (10+10=20) e dobre mais uma vez (20+20=40). Então, 8x5=40! É só dobrar três vezes!"
+                }
+            },
+            9: {
+                title: "Tabuada do 9 - O Truque dos Dedos!",
+                description: "A tabuada do 9 tem um truque incrível usando apenas as suas mãos!",
+                trick: {
+                    title: "👐 Truque dos Dedos Mágicos",
+                    text: "Abra as duas mãos. Para multiplicar 9 por um número (de 1 a 10), dobre o dedo correspondente a esse número (contando da esquerda para a direita). Os dedos à esquerda do dedo dobrado são as dezenas, e os dedos à direita são as unidades. Experimente abaixo!",
+                    interactive: 'handTrick'
+                }
+            },
+            10: {
+                title: "Tabuada do 10 - Adicione um Zero!",
+                description: "A tabuada mais fácil depois da do 1! É só acrescentar um zero no final.",
+                trick: {
+                    title: "0️⃣ Truque do Zero Mágico",
+                    text: "Multiplicar por 10 é super simples: pegue o número e coloque um zero no final. 10x3=30, 10x7=70, 10x9=90. Moleza!"
+                }
+            }
+        };
+
+        // Function to show Tabuada details
+        function showLearnContent(tabuadaNum) {
+            const data = tabuadaData[tabuadaNum];
+            if (!data) return;
+
+            let contentHTML = `
+                <div class="tabuada-detail">
+                    <h3>${data.title}</h3>
+                    <p>${data.description}</p>
+                    <div class="tabuada-list">
+            `;
+            for (let i = 1; i <= 10; i++) {
+                contentHTML += `<div class="tabuada-item">${tabuadaNum} x ${i} = ${tabuadaNum * i}</div>`;
+            }
+            contentHTML += `
+                    </div>
+                    <div class="tabuada-trick">
+                        <h4>${data.trick.title}</h4>
+                        <p>${data.trick.text}</p>
+            `;
+
+            // Add interactive hand trick for tabuada 9
+            if (data.trick.interactive === 'handTrick') {
+                contentHTML += `
+                    <div class="hand-trick" id="hand-trick-container">
+                        ${Array.from({ length: 10 }, (_, i) => `
+                            <div class="finger" data-finger="${i + 1}">
+                                <div class="finger-number">${i + 1}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="hand-result" id="hand-result-display">Dobre um dedo para ver a mágica! (Ex: Dobre o 3º dedo para 9x3)</div>
+                `;
+            }
+
+            contentHTML += `
+                    </div>
+                     <button class="btn btn-secondary close-learn-btn">Fechar</button>
+                </div>
+            `;
+
+            learnContent.innerHTML = contentHTML;
+            learnContent.style.display = 'block';
+            learnContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Add event listeners for hand trick if present
+            if (data.trick.interactive === 'handTrick') {
+                const fingers = learnContent.querySelectorAll('.finger');
+                const resultDisplay = learnContent.querySelector('#hand-result-display');
+                fingers.forEach(finger => {
+                    finger.addEventListener('click', () => {
+                        playSound('click');
+                        const fingerNum = parseInt(finger.dataset.finger);
+                        fingers.forEach(f => f.classList.remove('folded'));
+                        finger.classList.add('folded');
+
+                        let tens = 0;
+                        let units = 0;
+                        fingers.forEach((f, index) => {
+                            if (index < fingerNum - 1) {
+                                tens++;
+                            }
+                            if (index >= fingerNum && !f.classList.contains('folded')) {
+                                units++;
+                            }
+                        });
+                        // Correction for hand trick logic:
+                        tens = fingerNum - 1;
+                        units = 10 - fingerNum;
+                        const result = tens * 10 + units;
+
+                        resultDisplay.textContent = `Dedos à esquerda: ${tens} (dezena). Dedos à direita: ${units} (unidade). Resultado: 9 x ${fingerNum} = ${result}`;
+                        resultDisplay.classList.add('tada');
+                        setTimeout(() => resultDisplay.classList.remove('tada'), 1000);
+                    });
+                });
+            }
+
+            // Add listener for close button
+            const closeBtn = learnContent.querySelector('.close-learn-btn');
+            if(closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    playSound('click');
+                    hideLearnContent();
+                });
+            }
+        }
+
+        function hideLearnContent() {
+            learnContent.style.display = 'none';
+            learnContent.innerHTML = '';
+        }
+
+        // Add click listeners to Tabuada cards
+        tabuadaCards.forEach(card => {
+            card.addEventListener('click', () => {
+                playSound('click');
+                const tabuadaNum = card.dataset.tabuada;
+                hideGameInterface(); // Hide game if open
+                showLearnContent(tabuadaNum);
+            });
+        });
+
+        // --- Game Logic --- //
+        let currentGame = null;
+        let score = 0;
+        let timerInterval = null;
+        let timeLeft = 0;
+        let currentQuestion = {};
+        let streak = 0;
+        let practiceTables = [];
+        let gameActive = false;
+
+        function hideGameInterface() {
+            gameInterface.style.display = 'none';
+            gameInterface.innerHTML = '';
+            if (timerInterval) clearInterval(timerInterval);
+            gameActive = false;
+        }
+
+        function generateQuestion(tables) {
+            const table = tables[Math.floor(Math.random() * tables.length)];
+            const num1 = table;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const correctAnswer = num1 * num2;
+
+            const options = new Set([correctAnswer]);
+            while (options.size < 4) {
+                const wrongAnswer1 = Math.max(0, correctAnswer + (Math.random() < 0.5 ? -1 : 1) * (Math.floor(Math.random() * 3) + 1));
+                const wrongAnswer2 = num1 * (Math.floor(Math.random() * 10) + 1);
+                const wrongAnswer3 = (Math.floor(Math.random() * 10) + 1) * num2;
+                const wrongAnswer = [wrongAnswer1, wrongAnswer2, wrongAnswer3][Math.floor(Math.random()*3)];
+                if (wrongAnswer !== correctAnswer) {
+                    options.add(wrongAnswer);
+                }
+            }
+
+            currentQuestion = {
+                text: `${num1} x ${num2} = ?`,
+                options: Array.from(options).sort(() => Math.random() - 0.5),
+                correctAnswer: correctAnswer
+            };
+            return currentQuestion;
+        }
+
+        function displayQuestion() {
+            const questionContainer = gameInterface.querySelector('.question-container');
+            if (!questionContainer) return;
+
+            questionContainer.innerHTML = `
+                <div class="question">${currentQuestion.text}</div>
+                <div class="options-grid">
+                    ${currentQuestion.options.map(option => `<button class="option-btn btn">${option}</button>`).join('')}
+                </div>
+                <div class="feedback"></div>
+            `;
+
+            const optionButtons = gameInterface.querySelectorAll('.option-btn');
+            optionButtons.forEach(button => {
+                button.addEventListener('click', handleAnswer);
+            });
+        }
+
+        function handleAnswer(event) {
+            if (!gameActive) return;
+            playSound('click');
+            const selectedAnswer = parseInt(event.target.textContent);
+            const feedbackEl = gameInterface.querySelector('.feedback');
+            const optionButtons = gameInterface.querySelectorAll('.option-btn');
+
+            optionButtons.forEach(btn => btn.disabled = true); // Disable buttons after answer
+
+            if (selectedAnswer === currentQuestion.correctAnswer) {
+                feedbackEl.textContent = "Correto! 🎉";
+                feedbackEl.className = 'feedback correct';
+                event.target.style.backgroundColor = 'var(--success)';
+                event.target.style.color = 'white';
+                event.target.classList.add('pulse');
+                playSound('correct');
+                score++;
+                streak++;
+                updateScoreDisplay();
+                triggerConfetti(event.target);
+
+                // Next question after a short delay
+                setTimeout(() => {
+                    if (gameActive) nextTurn();
+                }, 1200);
+            } else {
+                feedbackEl.textContent = `Ops! A resposta era ${currentQuestion.correctAnswer}.`;
+                feedbackEl.className = 'feedback incorrect';
+                event.target.style.backgroundColor = 'var(--error)';
+                event.target.style.color = 'white';
+                event.target.classList.add('shake');
+                playSound('incorrect');
+                streak = 0; // Reset streak
+                updateScoreDisplay();
+
+                // Highlight correct answer
+                optionButtons.forEach(btn => {
+                    if (parseInt(btn.textContent) === currentQuestion.correctAnswer) {
+                        btn.style.backgroundColor = 'var(--success)';
+                        btn.style.color = 'white';
+                    }
+                });
+
+                // Next question or end game after a delay
+                setTimeout(() => {
+                    if (gameActive) {
+                        if (currentGame === 'streak') {
+                            endGame(); // End streak game on wrong answer
+                        } else {
+                            nextTurn();
+                        }
+                    }
+                }, 1800);
+            }
+        }
+
+        function updateScoreDisplay() {
+            const scoreEl = gameInterface.querySelector('.game-score');
+            const streakEl = gameInterface.querySelector('.game-streak');
+            if (scoreEl) scoreEl.textContent = `Pontos: ${score}`;
+            if (streakEl) streakEl.textContent = `Sequência: ${streak} 🔥`;
+        }
+
+        function updateTimerDisplay() {
+            const timerEl = gameInterface.querySelector('.game-timer');
+            if (timerEl) timerEl.textContent = `Tempo: ${timeLeft}s ⏱️`;
+        }
+
+        function nextTurn() {
+            if (!gameActive) return;
+            if (currentGame === 'speed' && timeLeft <= 0) {
+                endGame();
+                return;
+            }
+            const tablesToUse = (currentGame === 'practice' && practiceTables.length > 0) ? practiceTables : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            generateQuestion(tablesToUse);
+            displayQuestion();
+        }
+
+        function startGame(gameType) {
+            playSound('click');
+            currentGame = gameType;
+            score = 0;
+            streak = 0;
+            gameActive = true;
+            hideLearnContent(); // Hide learn section if open
+
+            let headerHTML = '';
+            let controlsHTML = `<button class="btn btn-error close-game-btn">Sair do Jogo</button>`;
+
+            if (gameType === 'speed') {
+                timeLeft = 60;
+                headerHTML = `
+                    <div class="game-score">Pontos: 0</div>
+                    <div class="game-timer">Tempo: 60s ⏱️</div>
+                `;
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        endGame();
+                    }
+                }, 1000);
+            } else if (gameType === 'streak') {
+                headerHTML = `
+                    <div class="game-streak">Sequência: 0 🔥</div>
+                `;
+            } else if (gameType === 'practice') {
+                // Show options to select tables first
+                gameInterface.innerHTML = `
+                    <h3>Treino Personalizado 🎯</h3>
+                    <p>Selecione as tabuadas que você quer praticar:</p>
+                    <div class="practice-options">
+                        ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => `
+                            <label>
+                                <input type="checkbox" value="${num}" checked>
+                                Tabuada do ${num}
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div class="game-controls">
+                        <button class="btn btn-primary start-practice-btn">Começar Treino!</button>
+                        ${controlsHTML}
+                    </div>
+                `;
+                gameInterface.style.display = 'block';
+                gameInterface.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                const startPracticeBtn = gameInterface.querySelector('.start-practice-btn');
+                startPracticeBtn.addEventListener('click', () => {
+                    playSound('click');
+                    const checkboxes = gameInterface.querySelectorAll('.practice-options input:checked');
+                    practiceTables = Array.from(checkboxes).map(cb => parseInt(cb.value));
+                    if (practiceTables.length === 0) {
+                        alert("Por favor, selecione pelo menos uma tabuada para praticar!");
+                        return;
+                    }
+                    // Now start the actual practice game
+                    headerHTML = `<div class="game-score">Pontos: 0</div>`;
+                    gameInterface.innerHTML = `
+                        <div class="game-header">${headerHTML}</div>
+                        <div class="question-container"></div>
+                        <div class="game-controls">${controlsHTML}</div>
+                    `;
+                    nextTurn();
+                });
+
+                // Add listener for close button in practice options
+                const closeBtn = gameInterface.querySelector('.close-game-btn');
+                if(closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        playSound('click');
+                        hideGameInterface();
+                    });
+                }
+                return; // Don't proceed further until practice starts
+            }
+
+            // Common game interface setup (for speed and streak)
+            gameInterface.innerHTML = `
+                <div class="game-header">${headerHTML}</div>
+                <div class="question-container"></div>
+                <div class="game-controls">${controlsHTML}</div>
+            `;
+            gameInterface.style.display = 'block';
+            gameInterface.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            updateScoreDisplay();
+            if (gameType === 'speed') updateTimerDisplay();
+            nextTurn();
+
+            // Add listener for close button in game
+            const closeBtn = gameInterface.querySelector('.close-game-btn');
+            if(closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    playSound('click');
+                    hideGameInterface();
+                });
+            }
+        }
+
+        function endGame() {
+            if (!gameActive) return; // Prevent multiple calls
+            gameActive = false;
+            if (timerInterval) clearInterval(timerInterval);
+            playSound('win');
+
+            let endMessage = '';
+            if (currentGame === 'speed') {
+                endMessage = `Tempo esgotado! Você fez ${score} pontos!`;
+            } else if (currentGame === 'streak') {
+                endMessage = `Sequência quebrada! Sua maior sequência foi de ${score} acertos!`; // Score holds the streak here
+            } else if (currentGame === 'practice') {
+                endMessage = `Treino finalizado! Você fez ${score} pontos!`;
+            }
+
+            const questionContainer = gameInterface.querySelector('.question-container');
+            if (questionContainer) {
+                questionContainer.innerHTML = `
+                    <h2>Fim de Jogo!</h2>
+                    <p style="font-size: 1.5rem; margin: 1rem 0;">${endMessage}</p>
+                    <p>Continue praticando para ficar ainda melhor! 🚀</p>
+                `;
+            }
+            triggerConfetti(gameInterface, 50); // More confetti on game end
+
+            // Optionally, disable option buttons if any are still visible
+            gameInterface.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+        }
+
+        // Add click listeners to Play buttons on game cards
+        playButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const gameType = button.dataset.gameType;
+                startGame(gameType);
+            });
+        });
+
+        // --- Confetti --- //
+        function triggerConfetti(element, count = 15) {
+            confettiContainer.style.display = 'block';
+            const rect = element.getBoundingClientRect();
+            const startX = rect.left + rect.width / 2;
+            const startY = rect.top + rect.height / 2;
+            const colors = ['var(--primary)', 'var(--secondary)', 'var(--accent1)', 'var(--accent2)', 'var(--accent3)'];
+
+            for (let i = 0; i < count; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = `${startX}px`;
+                confetti.style.top = `${startY}px`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 50 + 50;
+                const dx = Math.cos(angle) * velocity;
+                const dy = Math.sin(angle) * velocity - 80; // Initial upward motion
+                const rotation = Math.random() * 360;
+                const rotationSpeed = (Math.random() - 0.5) * 720;
+                const fallDuration = Math.random() * 1.5 + 1.5; // 1.5s to 3s
+
+                confetti.style.transform = `translate(0, 0) rotate(${rotation}deg)`;
+                confetti.style.transition = `transform ${fallDuration}s linear, opacity ${fallDuration}s linear`;
+
+                document.body.appendChild(confetti); // Append to body to overlay everything
+
+                setTimeout(() => {
+                    confetti.style.transform = `translate(${dx * 5}px, ${window.innerHeight}px) rotate(${rotation + rotationSpeed}deg)`;
+                    confetti.style.opacity = '0';
+                }, 10);
+
+                setTimeout(() => {
+                    confetti.remove();
+                    // Hide container if no confetti left
+                    if (document.querySelectorAll('.confetti').length === 0) {
+                        confettiContainer.style.display = 'none';
+                    }
+                }, fallDuration * 1000 + 100);
+            }
+        }
+
+    </script>
+</body>
+</html>
+
